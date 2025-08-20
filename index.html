@@ -21,12 +21,12 @@
         }
         #game-container {
             position: relative;
+            max-width: 480px;
             width: 100vw;
             height: 100vh;
-            max-width: 100vw;
-            max-height: 100vh;
             box-shadow: 0 0 32px #000a;
             background: #0c0c2c;
+            aspect-ratio: 9/16;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -36,13 +36,10 @@
             display: block;
             background-color: #0c0c2c; /* Fundo azul escuro do espaço */
             image-rendering: pixelated; /* Garante que os pixels fiquem nítidos */
-            width: 100vw;
-            height: 100vh;
-            max-width: 480px;
-            max-height: 90vh;
-            margin: 0 auto;
-            border-radius: 12px;
-            box-shadow: 0 0 32px #000a;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
         }
         #gameOverScreen {
             position: absolute;
@@ -99,21 +96,8 @@
         const restartButton = document.getElementById('restartButton');
         const finalScoreElement = document.getElementById('finalScore');
 
-        function ajustarCanvas() {
-            let largura = window.innerWidth;
-            let altura = window.innerHeight;
-            // Mantém proporção vertical (9:16) se possível
-            const proporcao = 9 / 16;
-            if (largura / altura > proporcao) {
-                largura = altura * proporcao;
-            } else {
-                altura = largura / proporcao;
-            }
-            canvas.width = largura > 480 ? 480 : largura;
-            canvas.height = altura;
-        }
-        ajustarCanvas();
-        window.addEventListener('resize', ajustarCanvas);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
         // --- Recursos do Jogo ---
         let nave = {};
