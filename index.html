@@ -326,6 +326,10 @@
         window.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') teclas.esquerda = true;
             if (e.key === 'ArrowRight') teclas.direita = true;
+            // Permite reiniciar o jogo com espaço na tela de fim de jogo
+            if (!jogoRodando && (e.key === ' ' || e.code === 'Space')) {
+                setupGame();
+            }
         });
         window.addEventListener('keyup', (e) => {
             if (e.key === 'ArrowLeft') teclas.esquerda = false;
